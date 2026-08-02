@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     VERSION: str
     API_PREFIX: str
     DEBUG: str
+    DATABASE_URL: str
 
     model_config = SettingsConfigDict(
         env_file=".env",
