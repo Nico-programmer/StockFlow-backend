@@ -1,8 +1,14 @@
 from fastapi import FastAPI
 from app.core.config import settings
 
-app = FastAPI(title=settings.PROJECT_NAME, version=settings.PROJECT_VERSION)
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    version=settings.VERSION
+)
 
 @app.get("/")
 def root():
-    return {"message": "Hello, World!"}
+    return {
+        "message": settings.PROJECT_NAME,
+        "version": settings.VERSION,
+    }

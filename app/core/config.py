@@ -1,6 +1,15 @@
-class Settings:
-    PROJECT_NAME: str = "SaS Backend"
-    PROJECT_VERSION: str = "0.1.0"
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Settings(BaseSettings):
+    PROJECT_NAME: str
+    VERSION: str
+    API_PREFIX: str
+    DEBUG: str
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        extra="ignore"
+    )
 
 
 settings = Settings()
