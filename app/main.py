@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+
+from app.api.router import api_router
 from app.core.config import settings
 
 app = FastAPI(
@@ -6,9 +8,7 @@ app = FastAPI(
     version=settings.VERSION
 )
 
-@app.get("/")
-def root():
-    return {
-        "message": settings.PROJECT_NAME,
-        "version": settings.VERSION,
-    }
+app.include_router(
+    api_router,
+    prefix = settings.API_PREFIX
+)
